@@ -29,3 +29,17 @@ packages = result.stdout.strip().split("\n")
 for package in sorted(packages, key=str.lower):
     print(package)
 
+#3. Write a script that checks if a `.env` file exists in the current directory; if not, create one with a placeholder `API_KEY=changeme`.
+
+from pathlib import Path
+env_f = Path(".env")
+if env_f.exists():
+    print(".env exist")
+else:
+    env_f.write_text("AP_KEY=name")
+    print(".env created")
+
+#count lines of code in py file
+
+
+
