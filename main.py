@@ -1,3 +1,5 @@
+from traceback import format_list
+
 print("Hello")
 print("Hello Divya")
 import sys
@@ -40,6 +42,58 @@ else:
     print(".env created")
 
 #count lines of code in py file
+
+import os
+totallines = 0
+for file in os.listdir("."):
+    if file.endswith((".py")):
+        with open (file,"r") as f:
+            lines = f.readlines()
+        print(len(lines))
+        totallines += len(lines)
+print(totallines)
+
+#Write a function that checks whether a given package name is installed, returning `True`/`False` (don't just try/except an import blindly — think about how to do this properly using `importlib.metadata`).
+
+
+from importlib.metadata import PackageNotFoundError,version
+
+def isavailable(packname):
+    try:
+        version(packname)
+        return True
+    except PackageNotFoundError:
+        return False
+
+print(isavailable("pytorch"))
+
+#Write a script that creates the `week01`–`week22` folder structure programmatically (don't do it by hand).
+
+# for week in range(1,23):
+#     folder = Path(f"Week{week:02d}")
+#     folder.mkdir()
+#
+# print("Week created")
+
+
+# to dlete
+
+from pathlib import Path
+import shutil
+
+for week in range(1, 23):
+    folder = Path(f"week{week:01d}")
+
+    if folder.exists():
+        shutil.rmtree(folder)
+        print(f"Deleted {folder}")
+
+print("All week folders deleted.")
+
+#COUNT OF COMMIT HAPPEN  git rev-list --count HEAD
+
+
+
 
 
 
